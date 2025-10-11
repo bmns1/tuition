@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVA Tuition & Affordability Plan Demo</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: #f9f9f9; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        h1, h2, h3, h4 { color: #004466; }
+        header { background-color: #004466; color: white; padding: 2rem; text-align: center; }
+        header h1 { color: white; margin: 0; font-size: 2.5em; }
+        nav { background-color: #f1f1f1; padding: 1rem; text-align: center; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 100; }
+        nav a { margin: 0 15px; text-decoration: none; font-weight: bold; color: #004466; }
+        section { background-color: white; border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        .estimator-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: end; }
+        .form-group { display: flex; flex-direction: column; }
+        .full-width { grid-column: 1 / -1; }
+        label { margin-bottom: 5px; font-weight: bold; }
+        input, select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1em; }
+        .calculate-btn { padding: 12px; font-size: 1.2em; font-weight: bold; color: white; background-color: #28a745; border: none; border-radius: 5px; cursor: pointer; margin-top: 1rem; }
+        #results { background-color: #e6f7ff; border: 1px solid #91d5ff; border-radius: 8px; padding: 1.5rem 2rem; margin-top: 2rem; }
+        #financial-aid-notice { background-color: #fffbe6; border: 1px solid #ffe58f; padding: 15px; border-radius: 5px; margin-top: 1rem; }
+        .child-breakdown { border-left: 3px solid #0077cc; padding-left: 15px; margin-bottom: 1.5rem; }
+        .child-breakdown p { margin: 4px 0; }
+        .hidden { display: none; }
+        hr.dashed { border: 0; border-top: 1px dashed #ccc; margin: 1.5rem 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SVA Tuition & Affordability Plan</h1>
+    </header>
+
+    <nav>
+        <a href="#tiers">Tuition</a>
+        <a href="#plans">Payment Plans</a>
+        <a href="#discounts">Discounts</a>
+        <a href="#estimator">Estimator</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="tiers">
+            <h2>Tuition Structure</h2>
+            <p>Our tuition is structured by grade level with two contribution tiers available to support our school's mission and community.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Base Tuition</th>
+                        <th>Foundation Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PreK (Full Day)</strong></td>
+                        <td>$16,900</td>
+                        <td>$17,900</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PreK (Half Day)</strong></td>
+                        <td>$15,500</td>
+                        <td>$16,500</td>
+                    </tr>
+                     <tr>
+                        <td><strong>Elementary (K-5)</strong></td>
+                        <td>$11,900</td>
+                        <td>$12,900</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Middle School (6-8)</strong></td>
+                        <td>$13,500</td>
+                        <td>$14,500</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            
+            <h4>Base Tier</h4>
+            <p>The <strong>Base Tier</strong> represents the actual, unsubsidized cost to educate one student for the school year. This rate covers our core operational expenses, including teacher salaries, curriculum materials, and campus maintenance. It is the essential amount needed to deliver the high-quality educational experience our community expects.</p>
+        
+            <h4>Foundation Tier</h4>
+            <p>The <strong>Foundation Tier</strong> gives families the opportunity to support the long-term vision and accessibility of our school through a philanthropic contribution. This tier includes the full cost of education plus an additional $1,000. These funds are instrumental in enhancing our programs, supporting professional development for our faculty, and strengthening our financial aid offerings to ensure a diverse and vibrant student body. <em>The additional contribution may be eligible for a tax deduction; please consult with a tax professional.</em></p>
+        </section>
+
+        <section id="plans">
+            <h2>Payment Plans</h2>
+            <p>We offer several payment plans with discounts for early payment.</p>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Plan Name</th>
+                        <th>Discount</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Annual Plan</strong></td>
+                        <td><strong>4%</strong></td>
+                        <td>One single payment due August 1.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semester Plan</strong></td>
+                        <td><strong>2%</strong></td>
+                        <td>Two installments: 60% due August 1, 40% due January 15.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly (10-Month) Plan</strong></td>
+                        <td>None</td>
+                        <td>Ten equal installments from August through May.</td>
+                    </tr>
+                </tbody>
+            </table>
+             <p><br>Families with an annual income below $150,000 may qualify for a <strong>12-month payment plan</strong>. Please indicate your income in the estimator to see if you qualify.</p>
+        </section>
+        
+        <section id="discounts">
+            <h2>Sibling & Referral Programs</h2>
+            <p>We offer discounts to support our families and to reward community growth.</p>
+            
+            <hr class="dashed">
+            <h4>Sibling Discount Program</h4>
+            <ul>
+                <li>A <strong>10% discount</strong> is applied to the tuition of the second child and all subsequent children. Discounts are always applied to the lowest tuition amounts first.</li>
+                <li><strong>Enhanced Sibling Discount:</strong> For families with <strong>3 or more children</strong> and an annual income below $250,000, the discount for the third child (and any subsequent children) increases on a sliding scale, reaching up to <strong>20%</strong> for incomes of $180,000 or less.</li>
+            </ul>
+            
+            <hr class="dashed">
+            <h4>Family Referral Program</h4>
+            <p>Our community is our greatest asset, and we're excited to reward families who help it grow. Existing SVA families can receive a <strong>$500 tuition credit</strong> for referring a new family who enrolls at our school.</p>
+            <p><strong>Program Details & Conditions:</strong></p>
+            <ul>
+                <li><strong>Referring Family:</strong> Must be a currently enrolled SVA family. Each referring family is eligible for one $500 credit per calendar year.</li>
+                <li><strong>Referred Family:</strong> The newly referred family must complete the entire admissions process, be accepted, and finalize their enrollment, including setting up a payment plan.</li>
+                <li><strong>Credit Application:</strong> Once the new family's enrollment is confirmed, the $500 tuition credit will be applied to the referring family's account by <strong>October 31st</strong> of the current academic year.</li>
+            </ul>
+        </section>
+
+        <section id="estimator">
+            <h2>Interactive Tuition Estimator</h2>
+            <p>Enter your family's information to receive a personalized tuition estimate.</p>
+            <div class="estimator-form">
+                <div class="form-group">
+                    <label for="familyIncome">Annual Family Income</label>
+                    <input type="number" id="familyIncome" placeholder="e.g., 195000" step="1000">
+                </div>
+                 <div class="form-group">
+                    <label for="numChildren">Number of Children</label>
+                    <select id="numChildren">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                 <div class="form-group full-width">
+                    <label for="paymentPlan">Select Payment Plan</label>
+                    <select id="paymentPlan">
+                        <option value="annual">Annual Plan (4% Discount)</option>
+                        <option value="semester">Semester Plan (2% Discount)</option>
+                        <option value="monthly">10-Month Plan (No Discount)</option>
+                    </select>
+                </div>
+                <div class="form-group full-width" style="flex-direction: row; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="referralCheckbox" style="width: auto;">
+                    <label for="referralCheckbox" style="margin-bottom: 0;">Apply $500 Family Referral Credit?</label>
+                </div>
+            </div>
+            <div id="childrenTiersContainer" class="estimator-form"></div>
+            <button class="calculate-btn full-width" id="calculateBtn">Calculate My Estimate</button>
+
+            <div id="results" class="hidden">
+                <h3>Your Estimated Tuition Summary</h3>
+                <div id="results-summary"></div>
+                <div id="results-breakdown"></div>
+                <div id="financial-aid-notice" class="hidden"></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // --- DATA ---
+        const BASE_TUITION = { 'prek_full': 16900, 'prek_half': 15500, 'elementary': 11900, 'middle': 13500 };
+        const FOUNDATION_ADDON = 1000;
+        const PAYMENT_DISCOUNTS = { 'annual': 0.04, 'semester': 0.02, 'monthly': 0 };
+        const REFERRAL_CREDIT = 500;
+
+        // --- DOM Elements ---
+        const numChildrenSelect = document.getElementById('numChildren');
+        const childrenContainer = document.getElementById('childrenTiersContainer');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resultsDiv = document.getElementById('results');
+        const incomeInput = document.getElementById('familyIncome');
+
+        // --- Event Listeners ---
+        numChildrenSelect.addEventListener('change', generateChildrenInputs);
+        calculateBtn.addEventListener('click', calculateTuition);
+
+        function generateChildrenInputs() {
+            const count = parseInt(numChildrenSelect.value);
+            childrenContainer.innerHTML = ''; 
+            for (let i = 1; i <= count; i++) {
+                const programSelect = document.createElement('select');
+                programSelect.id = `child${i}_program`;
+                programSelect.innerHTML = `<option value="prek_full">PreK Full Day</option><option value="prek_half">PreK Half Day</option><option value="elementary">Elementary</option><option value="middle">Middle School</option>`;
+                const tierSelect = document.createElement('select');
+                tierSelect.id = `child${i}_tier`;
+                tierSelect.innerHTML = `<option value="base">Base Tier</option><option value="foundation">Foundation Tier (+$1000)</option>`;
+                
+                const programGroup = document.createElement('div');
+                programGroup.classList.add('form-group');
+                programGroup.innerHTML = `<label>Child ${i} - Program</label>`;
+                programGroup.appendChild(programSelect);
+
+                const tierGroup = document.createElement('div');
+                tierGroup.classList.add('form-group');
+                tierGroup.innerHTML = `<label>Child ${i} - Contribution Tier</label>`;
+                tierGroup.appendChild(tierSelect);
+                
+                childrenContainer.appendChild(programGroup);
+                childrenContainer.appendChild(tierGroup);
+            }
+        }
+
+        function calculateTuition() {
+            const numChildren = parseInt(numChildrenSelect.value);
+            const paymentPlan = document.getElementById('paymentPlan').value;
+            const income = parseInt(incomeInput.value) || 0;
+            const applyReferral = document.getElementById('referralCheckbox').checked;
+
+            let childrenData = [];
+            for (let i = 1; i <= numChildren; i++) {
+                const programSelect = document.getElementById(`child${i}_program`);
+                const program = programSelect.value;
+                const programText = programSelect.options[programSelect.selectedIndex].text;
+                const tier = document.getElementById(`child${i}_tier`).value;
+                let baseTuition = BASE_TUITION[program];
+                let foundationAddon = (tier === 'foundation') ? FOUNDATION_ADDON : 0;
+                
+                childrenData.push({
+                    childIndex: i,
+                    programText: programText,
+                    baseTuition: baseTuition,
+                    foundationAddon: foundationAddon,
+                    originalTuition: baseTuition + foundationAddon,
+                    discount: 0,
+                    discountRate: 0,
+                });
+            }
+
+            // Sort by tuition from HIGHEST to LOWEST
+            childrenData.sort((a, b) => b.originalTuition - a.originalTuition);
+
+            // Apply discounts to the 2nd, 3rd, etc. children (who have the lowest tuitions)
+            if (numChildren > 1) {
+                // The loop starts at i=1, skipping the most expensive child at index 0
+                for (let i = 1; i < numChildren; i++) { 
+                    let discountRate = 0.10; // Base 10% discount for the 2nd child
+                    
+                    // Enhanced discount for 3rd child (i=2) and beyond
+                    if (i >= 2 && income > 0 && income < 250000) { 
+                        if (income < 180000) {
+                            discountRate = 0.20;
+                        } else {
+                            const incomeRange = 250000 - 180000;
+                            const discountRange = 0.20 - 0.10;
+                            const incomePosition = (250000 - income) / incomeRange;
+                            discountRate = 0.10 + (incomePosition * discountRange);
+                        }
+                    }
+                    childrenData[i].discount = childrenData[i].originalTuition * discountRate;
+                    childrenData[i].discountRate = discountRate;
+                }
+            }
+            
+            // Re-sort by original input order for display
+            childrenData.sort((a, b) => a.childIndex - b.childIndex);
+
+            const totalBaseTuition = childrenData.reduce((acc, child) => acc + child.originalTuition, 0);
+            const totalDiscount = childrenData.reduce((acc, child) => acc + child.discount, 0);
+            const tuitionAfterSiblingDiscount = totalBaseTuition - totalDiscount;
+            const paymentPlanDiscountRate = PAYMENT_DISCOUNTS[paymentPlan];
+            const paymentPlanDiscount = tuitionAfterSiblingDiscount * paymentPlanDiscountRate;
+            const tuitionAfterPlanDiscount = tuitionAfterSiblingDiscount - paymentPlanDiscount;
+            const referralCredit = applyReferral ? REFERRAL_CREDIT : 0;
+            const finalTuition = tuitionAfterPlanDiscount - referralCredit;
+
+            // --- Display Results ---
+            let breakdownHTML = '<h4>Calculation Breakdown</h4>';
+            childrenData.forEach(child => {
+                breakdownHTML += `
+                    <div class="child-breakdown">
+                        <strong>Child ${child.childIndex} (${child.programText})</strong>
+                        <p>Base Program Tuition: \$${child.baseTuition.toLocaleString()}</p>
+                        ${child.foundationAddon > 0 ? `<p>Foundation Add-on: +\$${child.foundationAddon.toLocaleString()}</p>` : ''}
+                        <p style="border-top: 1px solid #ccc; padding-top: 4px;">Subtotal: \$${child.originalTuition.toLocaleString()}</p>
+                        ${child.discount > 0 ? `<p>Sibling Discount (${(child.discountRate * 100).toFixed(1)}%): -\$${child.discount.toLocaleString('en-US', {minimumFractionDigits: 2})}</p>` : ''}
+                        <p><strong>Net Tuition for Child: \$${(child.originalTuition - child.discount).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong></p>
+                    </div>`;
+            });
+            document.getElementById('results-summary').innerHTML = breakdownHTML;
+
+            let summaryHTML = `<hr class="dashed"><h4>Final Summary</h4>`;
+            summaryHTML += `<p>Total Tuition (All Children): \$${totalBaseTuition.toLocaleString()}</p>`;
+            summaryHTML += `<p>Total Sibling Discount: -\$${totalDiscount.toLocaleString('en-US', {minimumFractionDigits: 2})}</p>`;
+            summaryHTML += `<p><strong>Subtotal after Sibling Discount: \$${tuitionAfterSiblingDiscount.toLocaleString('en-US', {minimumFractionDigits: 2})}</strong></p>`;
+             if (paymentPlanDiscount > 0) {
+                summaryHTML += `<p>Payment Plan Discount (${paymentPlanDiscountRate * 100}%): -\$${paymentPlanDiscount.toLocaleString('en-US', {minimumFractionDigits: 2})}</p>`;
+            }
+            if (referralCredit > 0) {
+                 summaryHTML += `<p>Family Referral Credit: -\$${referralCredit.toLocaleString('en-US', {minimumFractionDigits: 2})}</p>`;
+            }
+            summaryHTML += `<hr><h3>Total Annual Tuition: \$${finalTuition.toLocaleString('en-US', {minimumFractionDigits: 2})}</h3>`;
+            
+            summaryHTML += `<h4>Payment Schedule:</h4>`;
+            if (paymentPlan === 'annual') {
+                summaryHTML += `<p>One payment of <strong>\$${finalTuition.toLocaleString('en-US', {minimumFractionDigits: 2})}</strong> due August 1.</p>`;
+            } else if (paymentPlan === 'semester') {
+                 summaryHTML += `<ul>
+                    <li>Payment 1 (Aug 1): <strong>\$${(finalTuition * 0.6).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong></li>
+                    <li>Payment 2 (Jan 15): <strong>\$${(finalTuition * 0.4).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong></li>
+                </ul>`;
+            } else {
+                 summaryHTML += `<p>10 monthly payments of <strong>\$${(finalTuition / 10).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong>.</p>`;
+            }
+            document.getElementById('results-breakdown').innerHTML = summaryHTML;
+
+            const noticeDiv = document.getElementById('financial-aid-notice');
+            let noticeHTML = '';
+            if (income > 0 && income < 180000) {
+                noticeHTML += `<p>✅ With an income below $180,000, your family may qualify for additional <strong>Financial Assistance</strong>.</p>
+                <label><input type="checkbox"> Please send me more information about financial aid.</label>`;
+            }
+            if (income > 0 && income < 150000) {
+                noticeHTML += `<p>✅ Your family may also be eligible for a <strong>12-month payment plan</strong> to further spread out costs.</p>`;
+            }
+            
+            if (noticeHTML) {
+                noticeDiv.innerHTML = noticeHTML;
+                noticeDiv.classList.remove('hidden');
+            } else {
+                noticeDiv.classList.add('hidden');
+            }
+
+            resultsDiv.classList.remove('hidden');
+        }
+        // --- Initial Setup ---
+        generateChildrenInputs();
+    </script>
+</body>
+</html>
