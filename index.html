@@ -145,6 +145,17 @@
             background-color: var(--bg-white);
         }
 
+        /* NEW STYLE FOR "SEE MORE" BUTTON */
+        .see-more-btn {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .see-more-btn:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
@@ -200,10 +211,10 @@
             <br>
             
             <h4>Base Tier</h4>
-            <p>The <strong>Base Tier</strong> represents the actual, unsubsidized cost to educate one student for the school year. This rate covers our core operational expenses, including teacher salaries, curriculum materials, and campus maintenance. It is the essential amount needed to deliver the high-quality educational experience our community expects.</p>
+            <p class="expandable-js">The <strong>Base Tier</strong> represents the actual, unsubsidized cost to educate one student for the school year. This rate covers our core operational expenses, including teacher salaries, curriculum materials, and campus maintenance. It is the essential amount needed to deliver the high-quality educational experience our community expects.</p>
         
             <h4>Foundation Tier</h4>
-            <p>The <strong>Foundation Tier</strong> gives families the opportunity to support the long-term vision and accessibility of our school through a philanthropic contribution. This tier includes the full cost of education plus an additional $1,000. These funds are instrumental in enhancing our programs, supporting professional development for our faculty, and strengthening our financial aid offerings to ensure a diverse and vibrant student body. <em>The additional contribution may be eligible for a tax deduction; please consult with a tax professional.</em></p>
+            <p class="expandable-js">The <strong>Foundation Tier</strong> gives families the opportunity to support the long-term vision and accessibility of our school through a philanthropic contribution. This tier includes the full cost of education plus an additional $1,000. These funds are instrumental in enhancing our programs, supporting professional development for our faculty, and strengthening our financial aid offerings to ensure a diverse and vibrant student body. <em>The additional contribution may be eligible for a tax deduction; please consult with a tax professional.</em></p>
         </section>
 
         <section id="plans">
@@ -319,6 +330,27 @@
         </section>
 
     </div> <script>
+        // --- NEW "SEE MORE" SCRIPT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.expandable-js').forEach(el => {
+                const originalHTML = el.innerHTML;
+                const splitPoint = originalHTML.indexOf('.'); // Find the first period
+                
+                // Only truncate if the first sentence is clearly shorter than the full text
+                if (splitPoint > -1 && splitPoint < originalHTML.length - 20) {
+                    const conciseHTML = originalHTML.substring(0, splitPoint + 1);
+                    const seeMoreLink = ' <a href="#" class="see-more-btn">See More</a>';
+                    
+                    el.innerHTML = conciseHTML + seeMoreLink;
+                    
+                    el.querySelector('.see-more-btn').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        el.innerHTML = originalHTML; // Restore original text
+                    });
+                }
+            });
+        });
+
         // --- DATA ---
         const BASE_TUITION = { 'prek_full': 16900, 'prek_half': 15500, 'elementary': 11900, 'middle': 13500 };
         const FOUNDATION_ADDON = 1000;
