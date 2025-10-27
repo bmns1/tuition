@@ -6,20 +6,20 @@
     <title>SVA Tuition & Affordability Plan Demo</title>
     <style>
         :root {
-            /* Colors from style guide */
-            --primary-color: #023b7d; /* Style guide "Blue darker" */
-            --secondary-color: #0352af; /* Style guide "Secondary" */
-            --accent-color: #cfa719; /* Style guide "Primary" */
-            --text-color: #323a43; /* Style guide "Black (for text)" */
-            --text-light: #323a43; /* Style guide "Medium (for text)" */
-            --bg-light: #f7f7f8; /* Style guide "BG light" */
-            --bg-white: #ffffff; /* Style guide "BG white" */
-            --border-color: #ecedee; /* Style guide "Line (for divider/line)" */
-            --field-border-color: #d7dde4; /* Style guide "Field line (input field)" */
+            /* Colors from new style guide image */
+            --primary-color: #1A2A4C; /* "Inverse" color */
+            --secondary-color: #509D7A; /* "Accent Primary" color */
+            --accent-color: #509D7A; /* "Accent Primary" color */
+            --text-color: #323a43; 
+            --text-light: #555; 
+            --bg-light: #f7f8fa; /* Matches light theme */
+            --bg-white: #ffffff; /* Matches light theme */
+            --border-color: #ecedee; 
+            --field-border-color: #d7dde4; 
             
             /* Adapted colors for notices */
-            --notice-bg: #fffaf0; /* Light yellow, based on new accent */
-            --notice-border: #cfa719; /* Based on new accent */
+            --notice-bg: #f0f9f4; /* Light green, based on new accent */
+            --notice-border: #509D7A; /* Based on new accent */
         }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
@@ -85,7 +85,7 @@
         }
         input:focus, select:focus {
             border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(3, 82, 175, 0.2); /* Using RGB for --secondary-color */
+            box-shadow: 0 0 0 3px rgba(80, 157, 122, 0.2); /* Using RGB for new --secondary-color */
             outline: none;
         }
         
@@ -101,7 +101,7 @@
             margin-top: 1rem; 
             transition: background-color 0.2s, transform 0.1s;
         }
-        .calculate-btn:hover, .calculate-btn:focus { background-color: #b89615; transform: translateY(-1px); } /* Darkened accent */
+        .calculate-btn:hover, .calculate-btn:focus { background-color: #407d61; transform: translateY(-1px); } /* Darkened accent */
         
         #results { 
             background-color: #fdfdff; 
@@ -159,7 +159,6 @@
         <a href="#withdrawal">Withdrawal Policy</a>
         <a href="#discounts">Discounts</a>
         <a href="#estimator">Estimator</a>
-        <a href="#canvas-demo">Canvas</a>
     </nav>
 
     <div class="container">
@@ -319,12 +318,7 @@
             </div>
         </section>
 
-        <section id="canvas-demo">
-            <h2>Canvas Demo</h2>
-            <p>Here is a canvas element as requested. You can use JavaScript to draw graphics inside this box.</p>
-            <canvas id="myCanvas" width="800" height="200" style="border:1px solid var(--field-border-color); background-color: #fff; border-radius: 6px;"></canvas>
-        </section>
-        </div> <script>
+    </div> <script>
         // --- DATA ---
         const BASE_TUITION = { 'prek_full': 16900, 'prek_half': 15500, 'elementary': 11900, 'middle': 13500 };
         const FOUNDATION_ADDON = 1000;
@@ -460,7 +454,7 @@
             
             summaryHTML += `<h4>Payment Schedule:</h4>`;
             if (paymentPlan === 'annual') {
-                summaryHTML += `<p>One payment of <strong>\$${finalTuin.toLocaleString('en-US', {minimumFractionDigits: 2})}</strong> due <strong>July 1st</strong>.</p>`;
+                summaryHTML += `<p>One payment of <strong>\$${finalTuition.toLocaleString('en-US', {minimumFractionDigits: 2})}</strong> due <strong>July 1st</strong>.</p>`;
             } else if (paymentPlan === 'semester') {
                  summaryHTML += `<ul>
                     <li>Payment 1 (<strong>July 1st</strong>): <strong>\$${(finalTuition * 0.6).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong></li>
@@ -491,31 +485,6 @@
             resultsDiv.classList.remove('hidden');
         }
         
-        // --- Canvas Example Script ---
-        // You can use this to draw on the canvas
-        try {
-            const canvas = document.getElementById('myCanvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Draw a rectangle
-            ctx.fillStyle = 'var(--secondary-color)'; // Style guide color
-            ctx.fillRect(20, 20, 150, 100);
-
-            // Draw text
-            ctx.fillStyle = 'var(--primary-color)'; // Style guide color
-            ctx.font = '24px Arial';
-            ctx.fillText('Canvas Demo', 200, 70);
-
-            // Draw a circle
-            ctx.beginPath();
-            ctx.arc(400, 70, 50, 0, Math.PI * 2, true);
-            ctx.fillStyle = 'var(--accent-color)'; // Style guide color
-            ctx.fill();
-
-        } catch (e) {
-            console.error(e);
-        }
-
         // --- Initial Setup ---
         generateChildrenInputs();
     </script>
