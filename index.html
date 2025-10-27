@@ -5,29 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVA Tuition & Affordability Plan Demo</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: #f9f9f9; }
+        :root {
+            --primary-color: #004466;
+            --secondary-color: #0077cc;
+            --accent-color: #28a745;
+            --text-color: #333;
+            --text-light: #555;
+            --bg-light: #f7f8fa;
+            --border-color: #dee2e6;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-color); 
+            margin: 0; 
+            background-color: var(--bg-light); 
+        }
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        h1, h2, h3, h4 { color: #004466; }
-        header { background-color: #004466; color: white; padding: 2rem; text-align: center; }
-        header h1 { color: white; margin: 0; font-size: 2.5em; }
-        nav { background-color: #f1f1f1; padding: 1rem; text-align: center; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 100; }
-        nav a { margin: 0 15px; text-decoration: none; font-weight: bold; color: #004466; }
-        section { background-color: white; border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h1, h2, h3, h4 { color: var(--primary-color); font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; }
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+        h3 { font-size: 1.5em; }
+        h4 { font-size: 1.2em; color: var(--text-light); }
+        
+        header { background-color: var(--primary-color); color: white; padding: 2.5rem 2rem; text-align: center; }
+        header h1 { color: white; margin: 0; }
+        
+        nav { 
+            background-color: #ffffff; 
+            padding: 1rem; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-color); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        nav a { 
+            margin: 0 15px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            color: var(--primary-color); 
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a:focus { color: var(--accent-color); }
+        
+        section { 
+            background-color: white; 
+            border-radius: 8px; 
+            padding: 2rem; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        
         table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
-        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
-        th { background-color: #f2f2f2; font-weight: bold; }
+        th, td { padding: 12px 15px; border: 1px solid var(--border-color); text-align: left; }
+        th { background-color: var(--bg-light); font-weight: 600; }
+        td strong { color: var(--primary-color); }
+        
         .estimator-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: end; }
         .form-group { display: flex; flex-direction: column; }
         .full-width { grid-column: 1 / -1; }
-        label { margin-bottom: 5px; font-weight: bold; }
-        input, select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1em; }
-        .calculate-btn { padding: 12px; font-size: 1.2em; font-weight: bold; color: white; background-color: #28a745; border: none; border-radius: 5px; cursor: pointer; margin-top: 1rem; }
-        #results { background-color: #e6f7ff; border: 1px solid #91d5ff; border-radius: 8px; padding: 1.5rem 2rem; margin-top: 2rem; }
-        #financial-aid-notice { background-color: #fffbe6; border: 1px solid #ffe58f; padding: 15px; border-radius: 5px; margin-top: 1rem; }
-        .child-breakdown { border-left: 3px solid #0077cc; padding-left: 15px; margin-bottom: 1.5rem; }
+        label { margin-bottom: 8px; font-weight: 600; color: var(--text-light); }
+        input, select { 
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            font-size: 1em; 
+            background-color: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        input:focus, select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(0,119,204,0.2);
+            outline: none;
+        }
+        
+        .calculate-btn { 
+            padding: 14px; 
+            font-size: 1.2em; 
+            font-weight: bold; 
+            color: white; 
+            background-color: var(--accent-color); 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin-top: 1rem; 
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .calculate-btn:hover, .calculate-btn:focus { background-color: #218838; transform: translateY(-1px); }
+        
+        #results { 
+            background-color: #fdfdff; 
+            border: 1px solid var(--border-color); 
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 8px; 
+            padding: 1.5rem 2rem; 
+            margin-top: 2rem; 
+        }
+        #financial-aid-notice { 
+            background-color: #fffbe6; 
+            border: 1px solid #ffe58f; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin-top: 1.5rem; 
+        }
+        
+        .child-breakdown { border-left: 3px solid var(--secondary-color); padding-left: 15px; margin-bottom: 1.5rem; }
         .child-breakdown p { margin: 4px 0; }
+        
         .hidden { display: none; }
         hr.dashed { border: 0; border-top: 1px dashed #ccc; margin: 1.5rem 0; }
+        
+        details {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        summary {
+            font-weight: 600;
+            color: var(--secondary-color);
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+        }
+        details[open] summary {
+            border-bottom: 1px solid #eee;
+        }
+        .details-content {
+            padding: 1rem;
+            background-color: #fff;
+        }
+
     </style>
 </head>
 <body>
@@ -39,6 +149,7 @@
     <nav>
         <a href="#tiers">Tuition</a>
         <a href="#plans">Payment Plans</a>
+        <a href="#withdrawal">Withdrawal Policy</a>
         <a href="#discounts">Discounts</a>
         <a href="#estimator">Estimator</a>
     </nav>
@@ -103,23 +214,39 @@
                     <tr>
                         <td><strong>Annual Plan</strong></td>
                         <td><strong>4%</strong></td>
-                        <td>One single payment due August 1.</td>
+                        <td>One single payment due <strong>July 1st</strong>.</td>
                     </tr>
                     <tr>
                         <td><strong>Semester Plan</strong></td>
                         <td><strong>2%</strong></td>
-                        <td>Two installments: 60% due August 1, 40% due January 15.</td>
+                        <td>Two installments: 60% due <strong>July 1st</strong>, 40% due January 15.</td>
                     </tr>
                     <tr>
                         <td><strong>Monthly (10-Month) Plan</strong></td>
                         <td>None</td>
-                        <td>Ten equal installments from August through May.</td>
+                        <td>Ten equal installments from <strong>July through April</strong>.</td>
                     </tr>
                 </tbody>
             </table>
              <p><br>Families with an annual income below $150,000 may qualify for a <strong>12-month payment plan</strong>. Please indicate your income in the estimator to see if you qualify.</p>
         </section>
-        
+
+        <section id="withdrawal">
+            <h2>Withdrawal & Fees Policy</h2>
+            <p>The enrollment agreement commits families to the full annual tuition. Monthly payment plans are provided as a convenience and do not constitute a month-to-month contract.</p>
+            <ul>
+                <li><strong>Withdrawal Deadline:</strong> Families may withdraw from their enrollment agreement without penalty on or before <strong>May 31st</strong>.</li>
+                <li><strong>Late Withdrawal Penalty:</strong> For withdrawals after May 31st, a penalty of <strong>20% of the remaining tuition balance</strong> will be assessed. The remaining balance is calculated based on the 10-month installment plan.</li>
+            </ul>
+            <details>
+                <summary>Click for a penalty example</summary>
+                <div class="details-content">
+                    <p><strong>Example:</strong> A family is on a 10-month plan of $1,000/month (total tuition of $10,000).</p>
+                    <p>They withdraw in September after making 3 payments (July, Aug, Sep). Their remaining tuition balance is $7,000 (for the 7 months left).</p>
+                    <p>The penalty applied would be <strong>$1,400</strong> (20% of $7,000).</p>
+                </div>
+            </details>
+        </section>
         <section id="discounts">
             <h2>Sibling & Referral Programs</h2>
             <p>We offer discounts to support our families and to reward community growth.</p>
@@ -320,14 +447,14 @@
             
             summaryHTML += `<h4>Payment Schedule:</h4>`;
             if (paymentPlan === 'annual') {
-                summaryHTML += `<p>One payment of <strong>\$${finalTuition.toLocaleString('en-US', {minimumFractionDigits: 2})}</strong> due August 1.</p>`;
+                summaryHTML += `<p>One payment of <strong>\$${finalTuition.toLocaleString('en-US', {minimumFractionDigits: 2})}</strong> due <strong>July 1st</strong>.</p>`;
             } else if (paymentPlan === 'semester') {
                  summaryHTML += `<ul>
-                    <li>Payment 1 (Aug 1): <strong>\$${(finalTuition * 0.6).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong></li>
+                    <li>Payment 1 (<strong>July 1st</strong>): <strong>\$${(finalTuition * 0.6).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong></li>
                     <li>Payment 2 (Jan 15): <strong>\$${(finalTuition * 0.4).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong></li>
                 </ul>`;
             } else {
-                 summaryHTML += `<p>10 monthly payments of <strong>\$${(finalTuition / 10).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong>.</p>`;
+                 summaryHTML += `<p>10 monthly payments of <strong>\$${(finalTuition / 10).toLocaleString('en-US', {minimumFractionDigits: 2})}</strong> (July - April).</p>`;
             }
             document.getElementById('results-breakdown').innerHTML = summaryHTML;
 
