@@ -145,7 +145,6 @@
             background-color: var(--bg-white);
         }
 
-        /* NEW STYLE FOR "SEE MORE" BUTTON */
         .see-more-btn {
             color: var(--secondary-color);
             text-decoration: none;
@@ -154,6 +153,19 @@
         }
         .see-more-btn:hover {
             text-decoration: underline;
+        }
+
+        /* --- NEW MEDIA QUERY FOR MOBILE --- */
+        @media (max-width: 600px) {
+            .estimator-form {
+                grid-template-columns: 1fr; /* Stack columns on mobile */
+            }
+            section {
+                padding: 1.5rem 1rem; /* Reduce padding on mobile */
+            }
+            .container {
+                padding: 10px;
+            }
         }
 
     </style>
@@ -300,7 +312,7 @@
                     <label for="numChildren">Number of Children</label>
                     <select id="numChildren">
                         <option value="1">1</option>
-                        <option value="2">2</option>
+                        <option valueD="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select>
